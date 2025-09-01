@@ -5,7 +5,7 @@
   import { Barcode } from "../fabric-object/barcode";
   import { QRCode } from "../fabric-object/qrcode";
   import { iconCodepoints, type MaterialIcon } from "../mdi_icons";
-  import { automation, connectionState } from "../stores";
+  import { automation, connectionState, printerMeta } from "../stores";
   import {
     type ExportedLabelTemplate,
     type FabricJson,
@@ -365,6 +365,12 @@
   });
 
   $: fabricCanvas?.setLabelProps(labelProps);
+  $: if ($printerMeta && $printerMeta.printDirection) {
+    onUpdateLabelProps({
+      ...labelProps,
+      printDirection: $printerMeta.printDirection,
+    });
+  }
 </script>
 
 <svelte:window bind:innerWidth={windowWidth} on:keydown={onKeyDown} on:paste={onPaste} />

@@ -6,6 +6,30 @@ Uses [NiimBlueLib](https://github.com/MultiMote/niimbluelib) for communication.
 
 Project is deployed here: [niim.blue](https://niim.blue)
 
+## Fork Modifications
+
+This fork includes several enhancements specifically for the NIIMBOT B1 printer:
+
+### ✨ New Features
+- **30x20mm Label Support**: Added a new 30x20mm label preset for improved label size options
+- **NIIMBOT B1 USB Detection**: Implemented automatic B1 printer detection via USB (Vendor ID: 0x3513, Product ID: 0x0002)
+- **Smart B1 Connection**: Custom USB connector component that validates device compatibility before connecting
+- **Print Direction Fix**: Automatic print direction adjustment based on printer metadata to resolve offset issues
+
+### 🔧 Technical Changes
+- Added `B1Connector.svelte` component for specialized B1 USB connection handling
+- Enhanced `LabelDesigner.svelte` with automatic print direction synchronization
+- Updated `PrinterConnector.svelte` to use the new B1 connector component
+- Added 30x20mm preset to default label configurations in `defaults.ts`
+
+### ✅ Testing & Validation
+- **Platform**: Ubuntu Linux 25
+- **Connection**: USB connectivity verified
+- **Hardware**: Tested with NIIMBOT B1 printer
+- **Features**: Label printing, size presets, and USB detection all validated
+
+These modifications ensure seamless integration with NIIMBOT B1 printers while maintaining compatibility with the original codebase.
+
 > [!NOTE]
 > If you have printing problems, try different print task versions in print preview dialog. Make if default by pressing "Lock" button.
 >

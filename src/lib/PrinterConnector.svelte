@@ -27,6 +27,7 @@
   import { LocalStoragePersistence } from "../utils/persistence";
   import type { MaterialIcon } from "material-icons";
   import { FileUtils } from "../utils/file_utils";
+  import B1Connector from "./B1Connector.svelte";
 
   let connectionType: ConnectionType = "bluetooth";
   let featureSupport: AvailableTransports = { webBluetooth: false, webSerial: false, capacitorBle: false };
@@ -268,12 +269,7 @@
       </button>
     {/if}
     {#if featureSupport.webSerial}
-      <button
-        class="btn text-nowrap {connectionType === 'serial' ? 'btn-light' : 'btn-outline-secondary'}"
-        on:click={() => switchConnectionType((connectionType = "serial"))}>
-        <MdIcon icon="usb" />
-        {$tr("connector.serial")}
-      </button>
+      <B1Connector />
     {/if}
     {#if featureSupport.capacitorBle}
       <button
@@ -284,7 +280,6 @@
       </button>
     {/if}
   {/if}
-
   {#if $connectionState !== "connected"}
     <button
       class="btn btn-primary"
